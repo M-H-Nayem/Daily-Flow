@@ -43,33 +43,14 @@ const Navbar = () => {
     <nav className="sticky top-0 z-10 w-full bg-base-200 shadow-md">
       <div className=" mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          {/* বাম অংশ: লোগো বা প্রজেক্টের নাম */}
-          <a href="/" className="text-xl font-bold block lg:hidden">
+          <a href="/" className="text-2xl font-bold block lg:hidden">
             Daily Flow
           </a>
 
-          {/* মাঝের অংশ: ডেস্কটপ মেনু */}
           <div className="hidden lg:flex items-center space-x-4">
-            {/* {isLoggedIn ? (
-              // লগইন করা ব্যবহারকারীর জন্য মেনু
-              <>
-                <a href="/dashboard" className="hover:text-primary">ড্যাশবোর্ড</a>
-                <a href="/schedule" className="hover:text-primary">শিডিউল</a>
-                <a href="/budget" className="hover:text-primary">বাজেট</a>
-                <a href="/planner" className="hover:text-primary">প্ল্যানার</a>
-                <a href="/qna" className="hover:text-primary">কুইজ</a>
-              </>
-            ) : (
-              // লগ আউট করা ব্যবহারকারীর জন্য মেনু
-              <>
-                <a href="/about" className="hover:text-primary">আমাদের সম্পর্কে</a>
-                <a href="/features" className="hover:text-primary">ফিচারসমূহ</a>
-                <a href="/contact" className="hover:text-primary">যোগাযোগ</a>
-              </>
-            )} */}
+           
           </div>
 
-          {/* ডান অংশ: লগইন/লগ আউট বাটন */}
           <div className="hidden lg:flex items-center">
             <ul>
               {user ? (
@@ -107,7 +88,7 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* মোবাইল মেনু টগল বাটন */}
+          {/* Mobile toogle */}
           <div className="lg:hidden">
             <button onClick={handleMobileMenuToggle} className="btn btn-ghost">
               <FaBars className="w-6 h-6" />
@@ -116,7 +97,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* মোবাইল মেনু কন্টেন্ট */}
+      {/* Mobile*/}
       <div
         className={`lg:hidden transition-all duration-300 ${
           isMobileMenuOpen

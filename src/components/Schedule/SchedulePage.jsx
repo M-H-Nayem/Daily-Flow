@@ -181,7 +181,7 @@ const SchedulePage = () => {
           </h2>
         </div>
 
-        <div className="card w-full bg-none shadow-xl">
+        <div className="card w-full bg-none ">
           <div className="card-body p-3 ">
             <ScheduleGrid
               classesByDay={classesByDay}

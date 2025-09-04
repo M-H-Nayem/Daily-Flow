@@ -42,7 +42,7 @@ let navigate = useNavigate()
   };
 
   return (
-    <div className="w-full flex justify-center items-center  h-[90vh] lg:p-0">
+    <div className="w-full flex justify-center items-center  h-[90vh] p-4">
       <div className="w-lg p-6 bg-gray-300 rounded-lg shadow-2xl ">
         <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-gray-800 text-center">
           Login

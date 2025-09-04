@@ -37,7 +37,7 @@ const Register = () => {
   };
 
   return (
-    <div className="w-full flex justify-center items-center h-[90vh]  lg:p-0">
+    <div className="w-full flex justify-center items-center h-[90vh]  p-4">
       <div className="w-lg mx-auto  p-6 bg-gray-300 rounded-lg shadow-2xl">
         <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-gray-800 text-center">
           Register
@@ -79,7 +79,7 @@ const Register = () => {
             />
             <button
               type="button"
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-lg text-gray-500"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-lg text-gray-500 z-100 "
               onClick={() => setShowPassword((v) => !v)}
               tabIndex={-1}
             >

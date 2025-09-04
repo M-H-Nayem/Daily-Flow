@@ -35,7 +35,7 @@ const ScheduleGrid = ({ classesByDay, onEdit, onDelete, }) => {
                   return (
                     <td key={`${day}-${time}`} className="relative p-2 h-24">
                       {classForSlot && Object.keys(classForSlot.class).length > 0 ? (
-                        <div className="p-2 bg-base-200 rounded-lg shadow-sm h-full" style={{ borderLeft: `3px solid ${classForSlot.class.color}`, }}>
+                        <div className="p-2 bg-base-200 rounded-lg shadow-sm h-full" style={{ borderLeft: `3px solid ${classForSlot.class.color}`, }} >
                           <h4 className="font-semibold text-[16px]">{classForSlot.class.subject}</h4>
                           <p className="text-sm text-gray-800 mb-2">- {classForSlot.class.teacher}</p>
                           <div className="flex justify-end gap-1 mt-auto">
