@@ -101,5 +101,6 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 
 ## ✉️ Contact
 
-[Md. Mahmudul Hasan Nayem] - [mahmudulhasannayemssnic@gmail.com]
-LinkedIn:
+Md. Mahmudul Hasan Nayem 
+Email: mahmudulhasannayemssnic@gmail.com
+LinkedIn: https://www.linkedin.com/in/md--mahmudul-hasan-nayem/
