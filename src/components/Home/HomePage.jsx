@@ -22,7 +22,7 @@ const HomePage = () => {
       <div className="relative flex items-center justify-center min-h-[88vh] px-4 py-16 bg-cover bg-center"
            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" }}>
         <div className="absolute inset-0 bg-black opacity-60"></div> {/* Overlay */}
-        <div className="relative z-10 text-white text-center p-6 md:p-10 lg:p-12 max-w-5xl mx-auto  bg-opacity-10 rounded-xl shadow-2xl backdrop-blur-sm">
+        <div className="relative z-1 text-white text-center p-6 md:p-10 lg:p-12 max-w-5xl mx-auto  bg-opacity-10 rounded-xl shadow-2xl backdrop-blur-sm">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 animate-fade-in-down">
             Welcome to <span className="text-blue-300">Daily Flow</span>!
           </h1>
@@ -30,12 +30,10 @@ const HomePage = () => {
             Simplify your daily student life with our comprehensive tools.
           </p>
           <div className="space-y-4 md:space-y-0 md:flex md:justify-center md:space-x-6">
-            <Link to="/dashboard" className="btn bg-blue-500 hover:bg-blue-600 text-white border-none text-lg px-8 py-3 rounded-full shadow-lg transform transition-transform hover:scale-105">
+            <Link to="/schedule" className="btn bg-gray-200 hover:bg-gray-100 text-blue-900 border-none text-lg px-8 py-3 rounded-full shadow-lg transform transition-transform hover:scale-105">
               Get Started Now!
             </Link>
-            <Link to="/features" className="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-3 rounded-full shadow-lg transform transition-transform hover:scale-105">
-              Learn More
-            </Link>
+           
           </div>
         </div>
       </div>

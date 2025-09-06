@@ -15,7 +15,7 @@ const MainLayout = () => {
   };
 
   let normalEffect =
-    "px-4 py-2 rounded-md hover:bg-gray-500 hover:text-primary-content transition-colors ";
+    "px-4 py-2 rounded-md hover:bg-gray-500 hover:text-primary-content transition-colors bg-gray-200 ";
   let activeEffect = "bg-gray-500 text-gray-100 font-semibold shadow-lg";
 
   return (
@@ -46,44 +46,44 @@ const MainLayout = () => {
           {/* Sidebar content here */}
           <li>
             <NavLink to="/" className={({ isActive }) =>
-                      `${normalEffect} ${isActive ? `${activeEffect}` : ""} mb-3`
+                      `${normalEffect} ${isActive ? `${activeEffect}` : ""} mb-3 `
                     } onClick={handleLinkClick}>
-              <FaHome /> হোম
+              <FaHome /> Home
             </NavLink>
           </li>
           <li>
             <NavLink to="/schedule" className={({ isActive }) =>
                       `${normalEffect} ${isActive ? `${activeEffect}` : ""} mb-3`
                     } onClick={handleLinkClick}>
-              <FaBook /> ক্লাস শিডিউল
+              <FaBook /> Class Schedule
             </NavLink>
           </li>
           <li>
             <NavLink to="/budget" className={({ isActive }) =>
                       `${normalEffect} ${isActive ? `${activeEffect}` : ""} mb-3`
                     } onClick={handleLinkClick}>
-              <FaMoneyBillWave /> বাজেট ট্র্যাকার
+              <FaMoneyBillWave /> Budget Tracker
             </NavLink>
           </li>
           <li>
             <NavLink to="/qna" className={({ isActive }) =>
                       `${normalEffect} ${isActive ? `${activeEffect}` : ""} mb-3`
                     } onClick={handleLinkClick}>
-              <FaQuestion /> এক্সাম Q&A
+              <FaQuestion /> Exam Q&A
             </NavLink>
           </li>
           <li>
             <NavLink to="/study-plan" className={({ isActive }) =>
                       `${normalEffect} ${isActive ? `${activeEffect}` : ""} mb-3`
                     } onClick={handleLinkClick}>
-              <FaReadme /> স্টাডি প্ল্যানার
+              <FaReadme /> Study Planner
             </NavLink>
           </li>
           <li>
             <NavLink to="/progress" className={({ isActive }) =>
                       `${normalEffect} ${isActive ? `${activeEffect}` : ""} mb-3`
                     } onClick={handleLinkClick}>
-              <FaChartLine />প্রগ্রেস
+              <FaChartLine /> Progress
             </NavLink>
           </li>
         </ul>

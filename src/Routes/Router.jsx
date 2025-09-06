@@ -4,11 +4,12 @@ import App from "../App";
 import HomePage from "../components/Home/HomePage";
 import SchedulePage from "../components/Schedule/SchedulePage";
 import BudgetPage from "../components/Budget/BudgetPage";
-import QuizPage from "../components/Quiz/QuizPage";
 import StudyPlannerPage from "../components/Study/StudyPlannerPage";
-import ProgressDashboard from "../components/Progress/ProgressDashboard";
 import Login from "../components/Sign/Login";
 import Register from "../components/Sign/Register";
+import ErrorPage from "../components/Error/ErrorPage";
+import ExamGenerator from "../components/Quiz/ExamGenerator";
+import OverallProgress from "../components/Progress/StudentSuccessCenter";
 
 export let router = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ export let router = createBrowserRouter([
       },
       {
         path: "qna",
-        element:<QuizPage></QuizPage>
+        element:<ExamGenerator></ExamGenerator>
       },
       {
         path: "study-plan",
@@ -37,7 +38,7 @@ export let router = createBrowserRouter([
       },
       {
         path: "progress",
-        element:<ProgressDashboard></ProgressDashboard>
+        element:<OverallProgress></OverallProgress>
       },
       {
         path: "login",
@@ -48,5 +49,9 @@ export let router = createBrowserRouter([
         element: <Register></Register>
       },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage></ErrorPage>,
   },
 ]);

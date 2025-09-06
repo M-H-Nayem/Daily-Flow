@@ -54,12 +54,8 @@ const processScheduleData = (fetchedData) => {
 };
 
 const SchedulePage = () => {
-  let { user } = useAuth();
-  let email = "mahmudulhasannayemssnic@gmail.com";
-
-  if (user) {
-    email = user.email;
-  }
+  let { user , Loading } = useAuth();
+ 
 
   const [classesByDay, setClassesByDay] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -67,10 +63,22 @@ const SchedulePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+const [email, setEmail] = useState("");
+
+useEffect(() => {
+  if (!Loading) {
+    if (user) {
+      setEmail(user.email);
+    } else {
+      setEmail("mahmudulhasannayemssnic@gmail.com");
+    }
+  }
+}, [user, Loading]);
+
   const loadData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/schedule?email=${email}`
+        `https://daily-flow-server-six.vercel.app/schedule?email=${email}`
       );
 
       if (!response.ok) {
@@ -92,13 +100,15 @@ const SchedulePage = () => {
     }
   };
   useEffect(() => {
+  if (email) {
     loadData();
-  }, []);
+  }
+}, [email]);
 
   const handleAddClass = async (newClass) => {
     console.log("from handle add", newClass);
     try {
-      await axios.post("http://localhost:5000/schedule", {
+      await axios.post("https://daily-flow-server-six.vercel.app/schedule", {
         ...newClass,
         user_email: email,
       });
@@ -116,7 +126,7 @@ const SchedulePage = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/schedule/${updatedClass._id}`,
+        `https://daily-flow-server-six.vercel.app/schedule/${updatedClass._id}`,
         updatedClass
       );
 
@@ -142,7 +152,7 @@ const SchedulePage = () => {
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/schedule/${idToDelete}`);
+        await axios.delete(`https://daily-flow-server-six.vercel.app/schedule/${idToDelete}`);
         Swal.fire(
           "Deleted!",
           "Your class has been successfully deleted.",
@@ -173,11 +183,12 @@ const SchedulePage = () => {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-[90vh]">
-      <div className="container ">
+    <div className="flex items-center justify-center min-h-[90vh]  ">
+      <title>Daily Flow || Schedule</title>
+      <div className="container bg-gray-50 rounded-2xl lg:my-5">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-4xl font-bold text-gray-800 text-center w-full p-4 pb-0">
-            Class Schedule{" "}
+          <h2 className=" text-gray-800 text-center w-full p-4 pb-0 text-3xl sm:text-4xl font-bold">
+            Class Schedule
           </h2>
         </div>
 

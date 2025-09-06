@@ -18,7 +18,7 @@ const provider = new GoogleAuthProvider();
  const AuthProvider = ({children}) => {
 
     let [user, setUser] = useState(null);
-  let [loading, setLoading] = useState(true);
+  let [Loading, setLoading] = useState(true);
 
   // console.log(user);
   let createUser = (email, password) => {
@@ -73,7 +73,7 @@ if (currentUser) {
     logOut,
     logIn,
     setLoading,
-    loading,
+    Loading,
     googleLogin,
     updateUser,
   };

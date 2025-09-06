@@ -36,7 +36,7 @@ const Navbar = () => {
   };
 
   let normalEffect =
-    "px-4 py-2 rounded-md hover:bg-gray-500 hover:text-primary-content transition-colors ";
+    "px-4 py-2 bg-gray-200 lg:rounded-md hover:bg-gray-500 hover:text-primary-content transition-colors ";
   let activeEffect = "bg-gray-500 text-gray-100 font-semibold shadow-lg";
 
   return (
@@ -52,7 +52,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center">
-            <ul>
+            <ul className="mr-10 font-bold">
               {user ? (
             <li>
               <button onClick={handleLogout} className={`btn bg-gray-300`}>
@@ -105,21 +105,21 @@ const Navbar = () => {
             : "max-h-0 opacity-0 overflow-hidden"
         }`}
       >
-        <ul className="flex flex-col items-center py-4 space-y-2">
-          <li>
+        <ul className="flex flex-col items-center py-4">
+          <li className="w-full">
             <NavLink
               to="/"
               className={({ isActive }) =>
                 `${normalEffect} ${
                   isActive ? `${activeEffect}` : ""
-                } mb-3 flex gap-3 justify-center items-center`
+                } mb-3 flex gap-3 justify-center items-center `
               }
               onClick={handleLinkClick}
             >
-              <FaHome /> হোম
+              <FaHome /> Home
             </NavLink>
           </li>
-          <li>
+          <li  className="w-full">
             <NavLink
               to="/schedule"
               className={({ isActive }) =>
@@ -129,10 +129,10 @@ const Navbar = () => {
               }
               onClick={handleLinkClick}
             >
-              <FaBook /> ক্লাস শিডিউল
+              <FaBook /> Class Schedule
             </NavLink>
           </li>
-          <li>
+          <li  className="w-full">
             <NavLink
               to="/budget"
               className={({ isActive }) =>
@@ -142,10 +142,10 @@ const Navbar = () => {
               }
               onClick={handleLinkClick}
             >
-              <FaMoneyBillWave /> বাজেট ট্র্যাকার
+              <FaMoneyBillWave /> Budget Tracker
             </NavLink>
           </li>
-          <li>
+          <li  className="w-full">
             <NavLink
               to="/qna"
               className={({ isActive }) =>
@@ -155,10 +155,10 @@ const Navbar = () => {
               }
               onClick={handleLinkClick}
             >
-              <FaQuestion /> এক্সাম Q&A
+              <FaQuestion /> Exam Q&A
             </NavLink>
           </li>
-          <li>
+          <li  className="w-full">
             <NavLink
               to="/study-plan"
               className={({ isActive }) =>
@@ -168,10 +168,10 @@ const Navbar = () => {
               }
               onClick={handleLinkClick}
             >
-              <FaReadme /> স্টাডি প্ল্যানার
+              <FaReadme /> Study Planner
             </NavLink>
           </li>
-          <li>
+          <li  className="w-full">
             <NavLink
               to="/progress"
               className={({ isActive }) =>
@@ -182,7 +182,7 @@ const Navbar = () => {
               onClick={handleLinkClick}
             >
               <FaChartLine />
-              প্রগ্রেস
+             Progress
             </NavLink>
           </li>
 
@@ -193,7 +193,7 @@ const Navbar = () => {
               </button>
             </li>
           ) : (
-            <li>
+            <li  className="w-full">
               <NavLink
                 to="/login"
                 className={({ isActive }) =>

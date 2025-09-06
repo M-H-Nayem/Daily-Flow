@@ -1,44 +1,26 @@
 import React from 'react';
-// import useAuth from '../Hooks/useAuth';
+import useAuth from '../Hooks/useAuth';
 import { useLocation, useNavigate } from 'react-router';
-import useAxiosSecure from '../Hooks/useAxiosSecure';
-import axios from 'axios';
+
 
 const SocialLogin = () => {
 
-let axiosSecure = useAxiosSecure()
-    // let{ googleLogin}=useAuth()
-    let navigate = useNavigate()
+let {googleLogin} = useAuth()
+
+  let navigate = useNavigate()
     let location = useLocation()
 
 
 
 let handleGoogleRegi =()=>{
-    // googleLogin()
-//     .then(async(result)=>{
-// try {
-//     let user = result.user
-//   const userData = {
-//             name: user.displayName,
-//             email: user.email,
-//             role: "user",
-//             by:'google',
-//             image: user.photoURL,
-//             created_at: new Date().toISOString(),
-//           } ;   
-//             const res = await axios.post("https://real-estate-platform-server-six.vercel.app/users", userData);
-//             // console.log(res.data);
-//             if (res.data.insertedId) {
-//               // console.log("User saved to database");
-//             }
-//             navigate(`${location.state ? location.state : "/"}`);
-
-//           } catch (err) {
-//             console.error("Error saving user to DB", err);
-//           }
-
-//     })
-//     .catch(()=>{})
+    
+  googleLogin()
+  .then(() => {
+    navigate('/')
+  })
+  .catch((err) => {
+    console.log(err);
+  })
     
   }
 

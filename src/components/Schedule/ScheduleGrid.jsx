@@ -75,8 +75,8 @@ const ScheduleGrid = ({ classesByDay, onEdit, onDelete, }) => {
                       <div key={slot.time}>
                         {Object.keys(slot.class).length > 0 ? (
                           <div className="p-4 bg-base-200 rounded-lg border-l-4 border-r-4" style={{ borderColor: slot.class.color }}>
-                            <h4 className="font-semibold text-[16px]">{slot.class.subject}</h4>
-                            <p className="text-sm text-gray-600">{slot.class.instructor}</p>
+                            <h4 className="font-semibold text-[18px]">{slot.class.subject}</h4>
+                            <p className="text-[16px] text-gray-600">-{slot.class.teacher}</p>
                             <p className="text-sm text-gray-500 mb-2">{slot.time}</p>
                             <div className="flex justify-end gap-2">
                               <button className="btn btn-sm btn-info" onClick={() => onEdit(slot.class, slot.time, day)}>Edit</button>

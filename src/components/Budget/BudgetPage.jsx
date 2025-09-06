@@ -15,25 +15,30 @@ import Swal from "sweetalert2";
 
 const BudgetPage = () => {
   const [transactions, setTransactions] = useState([]);
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("income");
   const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  let { user } = useAuth();
+  let { user , Loading } = useAuth();
 
-  const API_BASE_URL = "http://localhost:5000/transactions";
-  let email = "mahmudulhasannayemssnic@gmail.com";
-  if (user) {
-    email = user.email;
+  const API_BASE_URL = "https://daily-flow-server-six.vercel.app/transactions";
+
+
+const [email, setEmail] = useState("");
+
+useEffect(() => {
+  if (!Loading) {
+    if (user) {
+      setEmail(user.email);
+    } else {
+      setEmail("mahmudulhasannayemssnic@gmail.com");
+    }
   }
+}, [user, Loading]);
 
-  useEffect(() => {
-    fetchTransactions();
-  }, []);
-
-  const fetchTransactions = async () => {
+const fetchTransactions = async () => {
     try {
       setLoading(true);
       const response = await fetch(`${API_BASE_URL}?email=${email}`);
@@ -58,9 +63,18 @@ const BudgetPage = () => {
     }
   };
 
+
+  useEffect(() => {
+    if (email) {
+      fetchTransactions();    
+    }
+  }, [email]);
+
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!description || !amount) {
+    if (!title || !amount) {
       setError("Please fill in all fields.");
       Swal.fire({
         icon: "warning",
@@ -70,7 +84,7 @@ const BudgetPage = () => {
       return;
     }
     const newTransaction = {
-      description,
+      title,
       amount: parseFloat(amount),
       type,
       user_email: email,
@@ -110,7 +124,7 @@ const BudgetPage = () => {
         });
       }
 
-      setDescription("");
+      setTitle("");
       setAmount("");
       setType("income");
       fetchTransactions();
@@ -127,14 +141,14 @@ const BudgetPage = () => {
 
   const handleEdit = (transaction) => {
     setEditingId(transaction._id);
-    setDescription(transaction.description);
+    setTitle(transaction.title);
     setAmount(transaction.amount);
     setType(transaction.type);
   };
 
   const handleCancelEdit = () => {
     setEditingId(null);
-    setDescription("");
+    setTitle("");
     setAmount("");
     setType("income");
   };
@@ -182,11 +196,6 @@ const BudgetPage = () => {
     .reduce((sum, t) => sum + t.amount, 0);
   const remaining = totalIncome - totalExpense;
 
-  // const chartData = [
-  //   { name: "Income", value: totalIncome },
-  //   { name: "Expenses", value: totalExpense },
-  // ];
-
   const COLORS = {
     income: "#82ca9d",
     expense: "#ff7300",
@@ -194,8 +203,10 @@ const BudgetPage = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen p-4 sm:p-8">
-      <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-10">
+    <div className="bg-gray-100 min-h-[90vh] p-4 ">
+      <title>Daily Flow || Budget Tracker</title>
+
+      <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-lg p-6 ">
         <h1 className="text-3xl sm:text-4xl font-bold text-center mb-6 text-gray-800">
           Budget Tracker
         </h1>
@@ -235,13 +246,13 @@ const BudgetPage = () => {
               </div>
             </div>
 
-            <div className="w-full h-80">
+            <div className="w-full h-90">
               <ResponsiveContainer>
                 <PieChart>
                   <Pie
                     data={transactions}
                     dataKey="amount"
-                    nameKey="description"
+                    nameKey="title"
                     cx="50%"
                     cy="50%"
                     outerRadius={100}
@@ -271,12 +282,12 @@ const BudgetPage = () => {
             >
               <div className="mb-4">
                 <label className="block text-gray-700 text-sm font-bold mb-2">
-                  Description
+                  Title
                 </label>
                 <input
                   type="text"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   placeholder="e.g., Groceries, Salary"
                 />
@@ -331,7 +342,7 @@ const BudgetPage = () => {
                 Loading transactions...
               </p>
             ) : (
-              <div className="overflow-y-auto max-h-75 pr-4">
+              <div className="overflow-y-auto max-h-60 pr-4">
                 {transactions.length === 0 ? (
                   <p className="text-center text-gray-500">
                     No transactions added yet.
@@ -351,7 +362,7 @@ const BudgetPage = () => {
                       >
                         <div>
                           <p className="text-lg font-semibold">
-                            {transaction.description}
+                            {transaction.title}
                           </p>
                           <p
                             className={`font-bold ${
