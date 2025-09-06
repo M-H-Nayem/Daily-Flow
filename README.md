@@ -101,6 +101,8 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 
 ## ✉️ Contact
 
-Md. Mahmudul Hasan Nayem 
-Email: mahmudulhasannayemssnic@gmail.com
-LinkedIn: https://www.linkedin.com/in/md--mahmudul-hasan-nayem/
+Md. Mahmudul hasan Nayem
+
+- 📧 Email: [mahmudulhasannayemssnic@gmail.com](mailto:mahmudulhasannayemssnic@gmail.com)
+- 📱 WhatsApp: [+8801921785957](https://wa.me/8801921785957)
+- 🌐 Website: [My Portfolio](https://mhnayem-portfolio.vercel.app/)
