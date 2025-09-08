@@ -9,12 +9,13 @@ import {
   FaStudiovinari,
   FaReadme,
   FaChartLine,
+  FaClipboardList,
 } from "react-icons/fa";
 import useAuth from "./Hooks/useAuth";
 
 const Navbar = () => {
   let { user, logOut } = useAuth();
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,7 +23,7 @@ const Navbar = () => {
   const handleLogout = () => {
     try {
       logOut();
-      navigate("/")
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -41,50 +42,60 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-10 w-full bg-base-200 shadow-md">
-      <div className=" mx-auto px-4">
+      <div className=" mx-auto px-5 pr-0">
         <div className="flex justify-between items-center h-16">
           <a href="/" className="text-2xl font-bold block lg:hidden">
             Daily Flow
           </a>
 
-          <div className="hidden lg:flex items-center space-x-4">
-           
-          </div>
+          <div className="hidden lg:flex items-center space-x-4"></div>
 
           <div className="hidden lg:flex items-center">
             <ul className="mr-10 font-bold">
               {user ? (
-            <li>
-              <button onClick={handleLogout} className={`btn bg-gray-300`}>
-                Log Out
-              </button>
-            </li>
-          ) : (
-            <li className="flex gap-5 justify-center items-center">
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  `${normalEffect} ${
-                    isActive ? `${activeEffect}` : ""
-                  } bg-gray-300  flex gap-3 justify-center items-center btn-success`
-                }
-                onClick={handleLinkClick}
-              >
-                Login
-              </NavLink>
-              <NavLink
-                to="/register"
-                className={({ isActive }) =>
-                  `${normalEffect} ${
-                    isActive ? `${activeEffect}` : ""
-                  } bg-gray-300 flex gap-3 justify-center items-center btn-success`
-                }
-                onClick={handleLinkClick}
-              >
-                Register
-              </NavLink>
-            </li>
-          )}
+                <li className="flex gap-3">
+                  <NavLink
+                    to="/profile"
+                    className={({ isActive }) =>
+                      `${normalEffect} ${
+                        isActive ? `${activeEffect}` : ""
+                      }  flex gap-3 justify-center items-center `
+                    }
+                    onClick={handleLinkClick}
+                  >
+                    Profile
+                  </NavLink>
+
+                  <button onClick={handleLogout} className={`btn bg-gray-300`}>
+                    Log Out
+                  </button>
+                </li>
+              ) : (
+                <li className="flex gap-5 justify-center items-center">
+                  <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                      `${normalEffect} ${
+                        isActive ? `${activeEffect}` : ""
+                      } bg-gray-300  flex gap-3 justify-center items-center btn-success`
+                    }
+                    onClick={handleLinkClick}
+                  >
+                    Login
+                  </NavLink>
+                  <NavLink
+                    to="/register"
+                    className={({ isActive }) =>
+                      `${normalEffect} ${
+                        isActive ? `${activeEffect}` : ""
+                      } bg-gray-300 flex gap-3 justify-center items-center btn-success`
+                    }
+                    onClick={handleLinkClick}
+                  >
+                    Register
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -119,7 +130,7 @@ const Navbar = () => {
               <FaHome /> Home
             </NavLink>
           </li>
-          <li  className="w-full">
+          <li className="w-full">
             <NavLink
               to="/schedule"
               className={({ isActive }) =>
@@ -132,7 +143,21 @@ const Navbar = () => {
               <FaBook /> Class Schedule
             </NavLink>
           </li>
-          <li  className="w-full">
+          <li className="w-full">
+            <NavLink
+              to="/exam"
+              className={({ isActive }) =>
+                `${normalEffect} ${
+                  isActive ? `${activeEffect}` : ""
+                } mb-3 flex gap-3 justify-center items-center`
+              }
+              onClick={handleLinkClick}
+            >
+              <FaClipboardList />
+              Exam Schedule
+            </NavLink>
+          </li>
+          <li className="w-full">
             <NavLink
               to="/budget"
               className={({ isActive }) =>
@@ -145,7 +170,7 @@ const Navbar = () => {
               <FaMoneyBillWave /> Budget Tracker
             </NavLink>
           </li>
-          <li  className="w-full">
+          <li className="w-full">
             <NavLink
               to="/qna"
               className={({ isActive }) =>
@@ -158,7 +183,7 @@ const Navbar = () => {
               <FaQuestion /> Exam Q&A
             </NavLink>
           </li>
-          <li  className="w-full">
+          <li className="w-full">
             <NavLink
               to="/study-plan"
               className={({ isActive }) =>
@@ -171,7 +196,7 @@ const Navbar = () => {
               <FaReadme /> Study Planner
             </NavLink>
           </li>
-          <li  className="w-full">
+          <li className="w-full">
             <NavLink
               to="/progress"
               className={({ isActive }) =>
@@ -182,18 +207,31 @@ const Navbar = () => {
               onClick={handleLinkClick}
             >
               <FaChartLine />
-             Progress
+              Progress
             </NavLink>
           </li>
 
           {user ? (
-            <li>
-              <button onClick={handleLogout} className={`btn bg-gray-300`}>
-                Log Out
-              </button>
+            <li className="w-full">
+              <NavLink
+                to="/profile"
+                className={({ isActive }) =>
+                  `${normalEffect} ${
+                    isActive ? `${activeEffect}` : ""
+                  } mb-3 flex gap-3 justify-center items-center `
+                }
+                onClick={handleLinkClick}
+              >
+                Profile
+              </NavLink>
+              <div className="flex justify-center items-center">
+                <button onClick={handleLogout} className={`btn bg-gray-300 `}>
+                  Log Out
+                </button>
+              </div>
             </li>
           ) : (
-            <li  className="w-full">
+            <li className="w-full">
               <NavLink
                 to="/login"
                 className={({ isActive }) =>

@@ -19,7 +19,7 @@ let navigate = useNavigate()
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("Login Data:", data);
+    // console.log("Login Data:", data);
     logIn(data.email, data.password)
       .then(() => {
         Swal.fire({
@@ -42,13 +42,14 @@ let navigate = useNavigate()
   };
 
   return (
-    <div className="w-full flex justify-center items-center  h-[90vh] p-4">
-      <div className="w-lg p-6 bg-gray-300 rounded-lg shadow-2xl ">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-gray-800 text-center">
+    <div className="w-full flex justify-center items-center  h-[90vh] p-4 bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100">
+      <div className="w-lg p-6 bg-white rounded-lg shadow-2xl ">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-gray-800 text-center">
           Login
         </h2>
         <title>Login</title>
-        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+        <div className="bg-gray-100 rounded-lg shadow-inner p-5">
+          <form onSubmit={handleSubmit(onSubmit)} noValidate>
           {/* Email */}
           <label className="block mb-2 font-medium" htmlFor="email">
             Email
@@ -103,11 +104,12 @@ let navigate = useNavigate()
             Login
           </button>
         </form>
+        </div>
 
         <p className="text-center mt-4 text-sm">
           Don't have an account?{" "}
           <button className="text-primary font-semibold hover:underline">
-            <Link to={"/register"}>Register here</Link>
+            <Link to={"/register"}>Register</Link>
           </button>
         </p>
         <SocialLogin></SocialLogin>

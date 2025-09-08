@@ -1,6 +1,6 @@
 import React from 'react';
 import useAuth from '../Hooks/useAuth';
-import { useLocation, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
 
 const SocialLogin = () => {
@@ -8,8 +8,6 @@ const SocialLogin = () => {
 let {googleLogin} = useAuth()
 
   let navigate = useNavigate()
-    let location = useLocation()
-
 
 
 let handleGoogleRegi =()=>{

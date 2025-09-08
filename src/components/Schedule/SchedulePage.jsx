@@ -87,13 +87,13 @@ useEffect(() => {
 
       const data = await response.json();
 
-      console.log(data);
+      // console.log(data);
 
       const processedData = processScheduleData(data);
       setClassesByDay(processedData);
       setError(null);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setError("Error While Loading");
     } finally {
       setIsLoading(false);
@@ -106,7 +106,7 @@ useEffect(() => {
 }, [email]);
 
   const handleAddClass = async (newClass) => {
-    console.log("from handle add", newClass);
+    // console.log("from handle add", newClass);
     try {
       await axios.post("https://daily-flow-server-six.vercel.app/schedule", {
         ...newClass,
@@ -114,7 +114,7 @@ useEffect(() => {
       });
       loadData();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setError("There was an issue adding a new class.");
     } finally {
       setIsModalOpen(false);
@@ -122,7 +122,7 @@ useEffect(() => {
   };
 
   const handleEditClass = async (updatedClass) => {
-    console.log("from handle update", updatedClass);
+    // console.log("from handle update", updatedClass);
 
     try {
       await axios.put(
@@ -132,7 +132,7 @@ useEffect(() => {
 
       loadData();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       Swal.fire("Failed!", "There was an issue updating the class.", "error");
     } finally {
       setIsModalOpen(false);
@@ -160,19 +160,19 @@ useEffect(() => {
         );
         loadData();
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         Swal.fire("Failed!", "There was an issue deleting the class.", "error");
       }
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <span className="loading loading-dots loading-lg text-primary"></span>
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="flex justify-center items-center h-screen">
+  //       <span className="loading loading-dots loading-lg text-primary"></span>
+  //     </div>
+  //   );
+  // }
 
   if (error) {
     return (
@@ -183,14 +183,23 @@ useEffect(() => {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-[90vh]  ">
+    <div className="flex  justify-center min-h-[90vh] bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 px-3 pt-3 ">
       <title>Daily Flow || Schedule</title>
-      <div className="container bg-gray-50 rounded-2xl lg:my-5">
+      <div className="container h-fit bg-gray-50 rounded-2xl lg:my-3">
         <div className="flex justify-between items-center mb-6">
           <h2 className=" text-gray-800 text-center w-full p-4 pb-0 text-3xl sm:text-4xl font-bold">
             Class Schedule
           </h2>
         </div>
+
+        {
+          isLoading?  <div className="flex justify-center items-center h-[80vh]">
+        <span className="loading loading-dots loading-lg text-primary"></span>
+      </div>:
+       
+
+        <div className="">
+
 
         <div className="card w-full bg-none ">
           <div className="card-body p-3 ">
@@ -214,6 +223,8 @@ useEffect(() => {
             initialData={editingClass}
           />
         )}
+        </div>
+ }
       </div>
     </div>
   );

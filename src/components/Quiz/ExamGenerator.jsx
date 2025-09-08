@@ -57,10 +57,10 @@ const ExamGenerator = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-[90vh] p-4 sm:p-8">
+    <div className="bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 min-h-[90vh] p-3 sm:p-6">
       <title>Daily Flow || Q & A</title>
 
-      <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl p-6 sm:p-10">
+      <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-2xl p-3 lg:p-6 sm:p-10">
         <h1 className="text-3xl sm:text-4xl font-bold text-center mb-6 text-gray-800">
           Exam <span className="text-blue-600">Q&A</span> Generator
         </h1>
@@ -71,8 +71,8 @@ const ExamGenerator = () => {
         {/* Input Form Section */}
         <div className="bg-gray-50 p-6 rounded-lg shadow-inner mb-8">
           <form onSubmit={handleGenerate}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-              <div className="col-span-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              {/* <div className="col-span-1">
                 <label className="block text-gray-700 font-bold mb-2">Topic</label>
                 <input
                   type="text"
@@ -81,7 +81,7 @@ const ExamGenerator = () => {
                   placeholder="e.g., World History, Biology"
                   className="w-full px-4 py-2 border rounded-md focus:ring focus:ring-blue-200"
                 />
-              </div>
+              </div> */}
               <div className="col-span-1">
                 <label className="block text-gray-700 font-bold mb-2">Question Type</label>
                 <select
@@ -109,7 +109,8 @@ const ExamGenerator = () => {
             </div>
             <button
               type="submit"
-              className="w-full flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"
+              
+              className="w-full cursor-pointer flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform "
               disabled={loading}
             >
               {loading ? (

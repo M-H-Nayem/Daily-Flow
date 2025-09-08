@@ -12,8 +12,9 @@ const Register = () => {
   let { createUser, user,} = useAuth();
 
   const [showPassword, setShowPassword] = useState(false);
+  let navigate = useNavigate()
 
-  console.log(user);
+  // console.log(user);
 
   // Handle form submit
   const handleSubmit = async (e) => {
@@ -25,25 +26,41 @@ const Register = () => {
     let password = form.password.value;
     let formData = { name, email, password };
 
-    console.log(formData);
+    // console.log(formData);
 
     createUser(email, password)
-      .then(async () => {
-        console.log("created user");
-      })
-      .catch(() => {
-        console.log("error creating user");
-      });
+  .then(async () => {
+    Swal.fire({
+      icon: "success",
+      title: "Success!",
+      text: "User created successfully!",
+      showConfirmButton: false,
+      timer: 1500, 
+    });
+    
+    setTimeout(() => {
+      navigate('/');
+    }, 1500);
+  })
+  .catch((error) => {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: error.message || "Something went wrong! Please try again.",
+    });
+  });
   };
 
   return (
-    <div className="w-full flex justify-center items-center h-[90vh]  p-4">
-      <div className="w-lg mx-auto  p-6 bg-gray-300 rounded-lg shadow-2xl">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-gray-800 text-center">
+    <div className="w-full flex justify-center items-center h-[90vh] bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100  p-4">
+      <div className="w-lg mx-auto  p-6 bg-white rounded-lg shadow-2xl">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-gray-800 text-center">
           Register
         </h2>
         <title>Register</title>
-        <form onSubmit={handleSubmit} noValidate>
+        <div className="bg-gray-100 rounded-lg shadow-inner p-5">
+
+          <form onSubmit={handleSubmit} noValidate>
           {/* Name */}
           <label className="block mb-2 font-medium" htmlFor="name">
             Full Name
@@ -92,11 +109,12 @@ const Register = () => {
             Register
           </button>
         </form>
+        </div>
 
         <p className="text-center mt-4 text-sm">
           Already have an account?{" "}
           <button className="text-primary font-semibold hover:underline">
-            <Link to={"/login"}>Login here</Link>
+            <Link to={"/login"}>Login</Link>
           </button>
         </p>
         <SocialLogin></SocialLogin>

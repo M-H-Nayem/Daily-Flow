@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, Link, NavLink } from 'react-router-dom';
-import { FaBars, FaHome, FaBook, FaMoneyBillWave, FaQuestion, FaStudiovinari, FaReadme, FaChartLine } from 'react-icons/fa';
+import { FaBars, FaHome, FaBook, FaMoneyBillWave, FaQuestion, FaStudiovinari, FaReadme, FaChartLine, FaClipboardList } from 'react-icons/fa';
 import Navbar from './Navbar';
 
 const MainLayout = () => {
@@ -41,7 +41,7 @@ const MainLayout = () => {
       {/* Sidebar */}
       <div className="drawer-side z-100 ">
         <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content  ">
+        <ul className="menu   p-4 w-70 min-h-full bg-base-200 text-base-content  ">
           <h2 className="text-3xl font-bold mb-6">Daily Flow</h2>
           {/* Sidebar content here */}
           <li>
@@ -56,6 +56,13 @@ const MainLayout = () => {
                       `${normalEffect} ${isActive ? `${activeEffect}` : ""} mb-3`
                     } onClick={handleLinkClick}>
               <FaBook /> Class Schedule
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/exam" className={({ isActive }) =>
+                      `${normalEffect} ${isActive ? `${activeEffect}` : ""} mb-3`
+                    } onClick={handleLinkClick}>
+              <FaClipboardList />Exam Schedule
             </NavLink>
           </li>
           <li>

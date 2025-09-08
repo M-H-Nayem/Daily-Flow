@@ -69,7 +69,7 @@ const AddEditClassModal = ({
     <div className="modal modal-open">
       <div className="modal-box">
         <h3 className="font-bold text-lg mb-4">
-          {initialData ? "Edit Class" : "Add New Class"}
+          {initialData._id ? "Edit Class" : "Add New Class"}
         </h3>
         <form onSubmit={handleSubmit}>
           <div className="form-control w-full mb-2">
@@ -149,7 +149,7 @@ const AddEditClassModal = ({
               Cancel
             </button>
             <button type="submit" className="btn btn-primary">
-              {initialData ? "Save" : "Add"}
+              {initialData._id ? "Update" : "Add"}
             </button>
           </div>
         </form>

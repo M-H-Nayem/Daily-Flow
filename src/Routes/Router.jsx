@@ -10,6 +10,8 @@ import Register from "../components/Sign/Register";
 import ErrorPage from "../components/Error/ErrorPage";
 import ExamGenerator from "../components/Quiz/ExamGenerator";
 import OverallProgress from "../components/Progress/StudentSuccessCenter";
+import ExamSchedule from "../components/Exam/ExamSchedule";
+import Profile from "../components/Profile/Profile";
 
 export let router = createBrowserRouter([
   {
@@ -47,6 +49,14 @@ export let router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>
+      },
+      {
+        path: "exam",
+        element: <ExamSchedule></ExamSchedule>
+      },
+      {
+        path: "Profile",
+        element:<Profile></Profile>
       },
     ],
   },
